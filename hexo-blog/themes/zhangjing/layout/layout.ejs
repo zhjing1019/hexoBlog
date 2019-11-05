@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+<body>
+    这里是 layout.ejs
+
+    <%- include("index.ejs") %>
+
+    <%- include("post.ejs") %>
+
+    <!-- 一般在写逻辑的时候会用到这个标签，这个标签不会输出到页面上 -->
+    <%  %>
+
+    <!-- 这个标签会输出到页面上，是带着非转义符号的 -->
+    <% 
+        var test = "基本上，就用这两组标签，其他的也用不上。";
+    %>
+
+    <%- test %>
+
+    <br />
+
+    <% site.posts.forEach(function(post){ %>
+
+        <%- post.path %>
+        <br />
+        <%- post.slug %>
+        <br />
+        <%- post._id %>
+        <br />
+        <%- post.title %>
+        <br />
+        <%- post.date %>
+        <br />
+
+        <a href="/<%- post.path %>"><%- post.title %></a>
+
+    <% }); %>
+  
+![](https://img2018.cnblogs.com/blog/626593/201906/626593-20190620152507609-296007299.png)
+
+  <%- body %>
+
+
+
+</body>
+</html>
